@@ -1,0 +1,33 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.container
+{
+	width: 100px;
+	height: 100px;
+	margin: 50px auto 0 auto;	
+}
+#buttonContainer
+{
+	width: 200px;
+	height: 30px;
+	margin: 10px auto 0 auto;
+	text-align: center;	
+}
+.button
+{
+	font-family:Arial, Helvetica, sans-serif;
+	color: white;
+	cursor: pointer;
+	
+	padding-top: 7px;
+	width: 60px;
+	height: 23px;
+	border-radius: 10px;
+	background-color: rgba(255,0,0,0.8);
+	display: inline-block;
+}
+.button:hover
+{
+	opacity: 0.8;	
+}

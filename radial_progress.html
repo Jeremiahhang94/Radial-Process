@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>Radial Progress</title>
+<link href="demo.css" rel="stylesheet" type="text/css" />
+<script src='radial_progress.js' type='text/javascript'></script>
+<script>
+window.onload = function()
+{
+	
+	/* ============================================================ 
+						MANUAL INPUT
+	============================================================  */
+	
+	var r = new RadialProgress("container",
+			{
+				color: "#b9ffa6",
+				highlight: "#93e97b"	
+			});
+			
+	var i = 0;
+	
+	/*
+		this is to simulate constant fetching of distance travelled. 
+	*/
+	var interval = setInterval(function()
+								{
+									r.setPercent(i);
+									i+=0.1;
+									
+									if(i>1)clearInterval(interval);
+								}, 500);
+	
+	
+	/* ============================================================ 
+						START/STOP TRIGGERS
+	============================================================  */
+	
+	var r2 = new RadialProgress("container2",
+			{
+				duration: 3000,
+				auto: false
+			});
+			
+	var startBtn = document.getElementById("start2"); 
+	startBtn.onclick = function(){ r2.animate() };
+	
+	var stopBtn = document.getElementById("stop2");
+	stopBtn.onclick = function(){ r2.stop(); };
+
+	/* ============================================================ 
+						CHANGE SIZES & COLOR
+	============================================================  */
+	
+	var r3 = new RadialProgress("container3", 
+			{
+				duration: 5000,
+				auto: true,
+				length: 200,
+				color: "#fa5353",
+				highlight: "#ff8484",
+				complete: function(){ console.log("Auto run complete"); }
+			});	
+	
+}
+</script>
+</head>
+
+<body>
+<!-- 
+<div class = "circle"> 
+    
+        <div class = 'mask full'> 
+        	<div class = 'fill'>
+            </div> 
+		</div>
+        
+        <div class = 'mask half'> 
+            <div class = 'fill fix'>
+            </div> 
+        	<div class = 'fill'>
+            </div> 
+		</div>
+        
+        <div class = 'inset shadow'>
+        </div>
+        
+</div>
+-->
+
+<div id = 'container' class = 'container'>
+</div>
+
+<div id = 'container2' class = 'container'>
+</div>
+
+<div id = 'buttonContainer'>
+	<div id = 'start2' class='button' style='background-color: rgba(0,180,0,0.8)'> start </div>
+    <div id = 'stop2' class='button'> stop </div>
+</div>
+
+<div id = 'container3' class = 'container' style='width: 200px; height: 200px;'>
+</div>
+
+</body>
+</html>
