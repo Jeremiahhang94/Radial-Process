@@ -31,25 +31,31 @@ How to Create a Circle
 3. Extended Parameters:
 
    a. color (String)
+   
          This define the base color of the circle.
 
    b. highlight (String)
+   
          This defines the progress bar’s color
 
    c. duration (int)
+   
          Time taken to complete a whole cycle, given in milliseconds (1 sec = 1000 milliseconds)
 
    d. length (int)
+   
          This define the diameter of the circle
 
    e. auto (boolean)
+   
          This defines if the animation would start automatically upon loading
 
    f. complete( ) (function)
+   
          This function will be performed once the progress have completed
 
 4. Example
-
+     ```javascript
       var c = new RadialProgress(“example_ID”, {
             color: “#FF2233”,
             highlight: “#2255AA”,
@@ -59,7 +65,7 @@ How to Create a Circle
                   alert(“Complete!”);
             }
       });
-
+      ```
 5. Methods
 
    a. animate( )
