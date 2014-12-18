@@ -73,12 +73,12 @@ RadialProgress.prototype.setPercent = function(percent)
 
 
 
-var CIRCLE_CLASS = 'circle',
-MASK_FULL_CLASS = 'mask full',
-FILL_CLASS = 'fill',
-MASK_HALF_CLASS = 'mask half',
-FILL_FIX_CLASS = 'fill fix',
-INSET_CLASS = 'inset';
+var CIRCLE_CLASS = 'radial_circle',
+MASK_FULL_CLASS = 'radial_mask radial_full',
+FILL_CLASS = 'radial_fill',
+MASK_HALF_CLASS = 'radial_mask radial_half',
+FILL_FIX_CLASS = 'radial_fill radial_fix',
+INSET_CLASS = 'radial_inset';
 
 function Circle(color, highlight, length)
 {	
