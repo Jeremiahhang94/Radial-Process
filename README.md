@@ -2,7 +2,9 @@ RADIAL PROGRESS - READ ME v1.0
 
 
 RADIAL PROGRESS - VERSION 1.0
-AUTHOR: JEREMIAH ANG YONG EN
+
+AUTHOR: JEREMIAH ANG YONG EN 
+
 DATE: 18 DECEMBER 2014
 
 =======================================================
@@ -10,19 +12,20 @@ DATE: 18 DECEMBER 2014
 About
 
 This is a simple radial progress animation, which allows you to use it as:
-1. countdown timer
-2. countdown value
-3. clock. 
+
+   1. countdown timer
+   2. countdown value
+   3. clock. 
 
 =======================================================
 
 How to Create a Circle
 
-1. create a div with a given Id 
+1. Create a div with a given Id 
 
       <div id = ‘radial_example’></div>
 
-2. in your script create a new RadialProgress object with the Div’s Id as the first parameter.
+2. In your script create a new RadialProgress object with the Div’s Id as the first parameter.
 
       <script>
             var rp = new RadialProgress(‘radial_example’);
