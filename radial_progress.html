@@ -17,14 +17,14 @@ window.onload = function()
 	var r = new RadialProgress("container",
 			{
 				color: "#b9ffa6",
-				highlight: "#93e97b"	
+				highlight: "#93e97b",
 			});
 			
 	var i = 0;
 	
 	/*
 		this is to simulate constant fetching of distance travelled. 
-	*/
+	
 	var interval = setInterval(function()
 								{
 									r.setPercent(i);
@@ -32,7 +32,7 @@ window.onload = function()
 									
 									if(i>1)clearInterval(interval);
 								}, 500);
-	
+	*/
 	
 	/* ============================================================ 
 						START/STOP TRIGGERS
@@ -40,12 +40,13 @@ window.onload = function()
 	
 	var r2 = new RadialProgress("container2",
 			{
-				duration: 3000,
-				auto: false
+				duration: 1000,
+				auto: false,
+				complete: function(){console.log("r3 complete");}
 			});
 			
 	var startBtn = document.getElementById("start2"); 
-	startBtn.onclick = function(){ r2.animate() };
+	startBtn.onclick = function(){ r2.start() };
 	
 	var stopBtn = document.getElementById("stop2");
 	stopBtn.onclick = function(){ r2.stop(); };
@@ -57,12 +58,24 @@ window.onload = function()
 	var r3 = new RadialProgress("container3", 
 			{
 				duration: 5000,
-				auto: true,
+				auto: false,
 				length: 200,
 				color: "#fa5353",
 				highlight: "#ff8484",
 				complete: function(){ console.log("Auto run complete"); }
 			});	
+			
+	/* ============================================================ 
+						ON CLICK EVENTS
+	============================================================  */
+	
+	var r4 = new RadialProgress("container4",
+			{
+				color: "#b9ffa6",
+				highlight: "#93e97b",
+				complete: function(){console.log("r4 complete")},
+				onclick: function(){r4.start();}
+			});
 	
 }
 </script>
@@ -102,6 +115,9 @@ window.onload = function()
 </div>
 
 <div id = 'container3' class = 'container' style='width: 200px; height: 200px;'>
+</div>
+
+<div id = 'container4' class = 'container'>
 </div>
 
 </body>

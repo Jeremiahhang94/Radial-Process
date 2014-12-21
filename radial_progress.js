@@ -14,15 +14,18 @@ function RadialProgress(selector, _option)
 		length: 100,
 		auto: false,
 		complete: function(){console.log("Complete");},
+		onclick: function(){},
 		
 		//unchangeable
 		maxDeg: 180,
 		isStopped: false,
-		currentProgress: 0
+		isPlaying: false,
+		isReset: false
 	}
 	this.option = merge_option(option, _option);
 	
 	this.circle = new Circle(this.option.color, this.option.highlight, this.option.length);
+	this.circle.obj.addEventListener("click", this.option.onclick);
 	dom.appendChild(this.circle.obj);
 	if(this.option.auto) this.animate();
 }
@@ -31,23 +34,33 @@ RadialProgress.prototype.animate = function(_deg)
 {
 	this.option.isStopped = false;
 	
-	var start = null;
+	var startTime = null;
 	var circle = this.circle;
 	var option = this.option;
 	var maxDeg = (!_deg) ? option.maxDeg : _deg;
 	var duration = (!_deg) ? option.duration : 0;
-	var shouldComplete = (!_deg) ? 1 : 0;
-	window.requestAnimationFrame(step);
+	var onComplete = (!_deg) ? option.complete : null;
+	start();
+	
+	//start
+	
 	
 	function step(timestamp)
 	{
-		if(!start) start = timestamp;
-		var progress = (timestamp - start) / duration;
+		if(!startTime) startTime = timestamp;
+		var progress = (timestamp - startTime) / duration;
 		
 		if(!option.isStopped)
 		{
 			if(progress < 1){ apply(progress); window.requestAnimationFrame(step); }
-			else { apply(1); if(shouldComplete) option.complete(); };
+			else end();
+		}
+		else
+		{
+			if(option.isReset)
+			{
+				reset();
+			}
 		}
 	}
 	
@@ -56,11 +69,40 @@ RadialProgress.prototype.animate = function(_deg)
 		var deg = maxDeg * progress;
 		circle.setRotate(deg);
 	}
+	
+	function start()
+	{
+		window.requestAnimationFrame(step);
+		option.isPlaying = true;	
+	}
+	function end()
+	{
+		apply(1); 
+		option.isPlaying = false; 
+		if(onComplete) onComplete();
+	}
+	function reset()
+	{
+		startTime = null;
+		option.isReset = false;
+		option.isStopped = false;
+		start();
+	}
 }
 
 RadialProgress.prototype.stop = function()
 {
 	this.option.isStopped = true;	
+	this.option.isPlaying = false;
+}
+RadialProgress.prototype.start = function()
+{
+	if(this.option.isPlaying)
+	{
+		this.stop();
+		this.option.isReset = true;	
+	}
+	else this.animate();
 }
 
 RadialProgress.prototype.setPercent = function(percent)
