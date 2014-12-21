@@ -137,6 +137,12 @@ How to Create a Circle
 
          Set the percent of the animation
 
-      
+   d. setTextValue( String text_value )
+   
+         Set the Text for value
+
+   e. setTextUnit ( String text_unit )
+   
+          Set the Text for unit
 
  
