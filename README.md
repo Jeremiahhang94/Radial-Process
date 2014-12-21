@@ -144,5 +144,13 @@ How to Create a Circle
    e. setTextUnit ( String text_unit )
    
           Set the Text for unit
+  
+   f. restart( )
+   
+         Restarts the circle, auto start again if option states auto
+
+   g. setOnclick( function onclick )
+   
+         Set the onclick function
 
  
