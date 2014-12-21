@@ -20,26 +20,37 @@ window.onload = function()
 				highlight: "#93e97b",
 				text_options: {
 						unit_color: "red",
-						text_show: true,
-						unit_y_pos: 20
+						text_show: true
+					},
+				onclick: function(){
+						startInterval(r);
 					}
 			});
 			
-	var i = 0;
-	
+	startInterval(r);
 	/*
 		this is to simulate constant fetching of distance travelled. 
 	*/
 	
-	var interval = setInterval(function()
-								{
-									r.setPercent(i);
-									var value = Math.round(i * 100);
-									r.setTextValue(value);
-									i+=0.1;
-									
-									if(i>1)clearInterval(interval);
-								}, 500);
+	function startInterval(r)
+	{
+		var i = 0;
+		var interval = setInterval(function()
+					  {
+						  r.setPercent(i);
+						  var value = Math.round(i * 100);
+						  r.setTextValue(value);
+						  i+=0.1;
+						  i = parseFloat(i.toFixed(1));
+						  
+						  if(i>1.1)
+						  {
+							  clearInterval(interval);
+							  r.restart();
+						  }
+					  }, 500);
+	}
+	
 	
 	
 	/* ============================================================ 

@@ -123,6 +123,17 @@ RadialProgress.prototype.start = function()
 	}
 	else this.animate();
 }
+RadialProgress.prototype.restart = function()
+{
+	if(this.option.auto)
+		this.start();
+	else
+	{
+		this.stop();
+		this.setPercent(0);
+		this.setTextValue(this.option.text_options.value_text);
+	}
+}
 
 // Setter Methods
 
@@ -131,6 +142,7 @@ RadialProgress.prototype.setPercent = function(percent)
 	var deg = percent * 180;
 	if(deg != 0)
 		this.animate(deg);
+	else this.circle.setRotate(deg);
 }
 
 RadialProgress.prototype.setTextValue = function(text_value)
@@ -142,6 +154,10 @@ RadialProgress.prototype.setTextUnit = function(text_unit)
 {
 	if(this.option.text_options.text_show)
 		this.circle.setUnit(text_unit);
+}
+RadialProgress.prototype.setOnclick = function(_onclick)
+{
+	this.option.onclick = _onclick;
 }
 
 
