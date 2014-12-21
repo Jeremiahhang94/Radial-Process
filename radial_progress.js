@@ -266,9 +266,9 @@ function CircleCSS(color, highlight, text_styles, length)
 		
 		var u_width = 0.5 * length,
 		u_height = 0.1 * length,
-		u_size = (text_styles.unit_size == -1) ? 0.1 * length : text_styles.value_size;
+		u_size = (text_styles.unit_size == -1) ? 0.1 * length : text_styles.unit_size;
 		u_marginLeft = (length - u_width) / 2,
-		u_marginTop = (text_styles.unit_y_pos == -1) ? ((length - u_height) / 2) + (v_height / 3) : text_styles.value_size,
+		u_marginTop = (text_styles.unit_y_pos == -1) ? ((length - u_height) / 2) + (v_height / 3) : text_styles.unit_y_pos,
 		u_color = text_styles.unit_color,
 		u_fontFamily = v_fontFamily;
 		
