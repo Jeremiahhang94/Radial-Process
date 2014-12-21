@@ -18,21 +18,29 @@ window.onload = function()
 			{
 				color: "#b9ffa6",
 				highlight: "#93e97b",
+				text_options: {
+						unit_color: "red",
+						text_show: true,
+						value_y_pos: 20
+					}
 			});
 			
 	var i = 0;
 	
 	/*
 		this is to simulate constant fetching of distance travelled. 
+	*/
 	
 	var interval = setInterval(function()
 								{
 									r.setPercent(i);
+									var value = Math.round(i * 100);
+									r.setTextValue(value);
 									i+=0.1;
 									
 									if(i>1)clearInterval(interval);
 								}, 500);
-	*/
+	
 	
 	/* ============================================================ 
 						START/STOP TRIGGERS
@@ -42,7 +50,11 @@ window.onload = function()
 			{
 				duration: 1000,
 				auto: false,
-				complete: function(){console.log("r3 complete");}
+				complete: function(){console.log("r3 complete");},
+				text_options:
+				{
+					text_show: false	
+				}
 			});
 			
 	var startBtn = document.getElementById("start2"); 
